@@ -5,7 +5,7 @@ namespace WeatherMonitor.Models;
 public class WeatherPublisher : IPublisher
 {
     private readonly List<ISubscriber> _subscribers = new List<ISubscriber>();
-    private WeatherState _weatherState = new WeatherState();
+    public WeatherState WeatherState { get; private set; } = new WeatherState();
 
     public void Attach(ISubscriber subscriber)
     {
@@ -27,7 +27,7 @@ public class WeatherPublisher : IPublisher
 
     public void ChangeWeatherState(WeatherState newState)
     {
-        _weatherState = newState;
+        WeatherState = newState;
         Notify();
     }
 }
