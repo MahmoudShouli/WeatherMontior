@@ -9,8 +9,8 @@ public static class ConfigUtils
 {
     public static BotConfig DeserializeConfigFile(string path)
     {
-        var configJson = File.ReadAllText(path);
-        var config = JsonSerializer.Deserialize<BotConfig>(configJson, new JsonSerializerOptions
+        var jsonData = File.ReadAllText(path);
+        var config = JsonSerializer.Deserialize<BotConfig>(jsonData, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
         });
