@@ -5,17 +5,11 @@ namespace WeatherMonitor.Bots;
 
 public class SunBot : Bot
 {
-    private double TemperatureThreshold { get; }
-
-    public SunBot(bool isEnabled, double threshold, string message)
-        : base(isEnabled, message)
-    {
-        TemperatureThreshold = threshold;
-    }
+    public double TemperatureThreshold { get; set; }
     
     public override void Update(IPublisher publisher)
     {
-        if (IsEnabled)
+        if (Enabled)
         {
             if ((publisher as WeatherPublisher)!.WeatherState.Temperature > TemperatureThreshold)
             {

@@ -8,7 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Utils\" />
+      <None Update="config\BotConfig.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

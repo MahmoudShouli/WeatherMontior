@@ -4,14 +4,9 @@ namespace WeatherMonitor.Bots;
 
 public abstract class Bot : ISubscriber
 {
-    protected bool IsEnabled { get; } 
-    protected string Message { get; }
-
-    protected Bot(bool isEnabled, string message)
-    {
-        IsEnabled = isEnabled;
-        Message = message;
-    }
+    public bool Enabled { get; set; } 
+    public string Message { get; set; } = string.Empty;
+    
     public abstract void Update(IPublisher publisher);
 
 }

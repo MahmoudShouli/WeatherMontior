@@ -1,4 +1,5 @@
 ﻿using WeatherMonitor.Bots;
+using WeatherMonitor.config;
 using WeatherMonitor.Models;
 
 namespace WeatherMonitor;
@@ -7,14 +8,16 @@ internal static class Program
 {
     private static void Main()
     {
-        WeatherState weatherState = new WeatherState("Nablus", 5, 41);
-
+        var weatherState = new WeatherState("New York", 10, 60);
         
-        Bot snowBot = new SnowBot(true, 10, "Ooo its getting snowy");
-        Bot sunBot = new SunBot(true, 30, "wear your sunglasess!");
-        Bot rainBot = new RainBot(false, 40, "dont forget your umbrella!");
+        var deserializedObject = ConfigUtils.DeserializeConfigFile("./config/BotConfig.json");
+        
+        ConfigUtils.ConfigBot<SunBot>(out var sunBot, deserializedObject);
+        ConfigUtils.ConfigBot<RainBot>(out var rainBot, deserializedObject);
+        ConfigUtils.ConfigBot<SnowBot>(out var snowBot, deserializedObject);
+        
 
-        WeatherPublisher weatherPublisher = new WeatherPublisher();
+        var weatherPublisher = new WeatherPublisher();
         weatherPublisher.Attach(snowBot);
         weatherPublisher.Attach(sunBot);
         weatherPublisher.Attach(rainBot);
