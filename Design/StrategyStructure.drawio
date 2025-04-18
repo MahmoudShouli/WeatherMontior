@@ -1,10 +1,10 @@
-<mxfile host="drawio-plugin" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" modified="2025-04-18T14:39:31.366Z" version="22.1.22" etag="8UcgGAVUhbn8cTCkmkPl" type="embed">
+<mxfile host="drawio-plugin" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" modified="2025-04-18T14:42:43.929Z" etag="hQeEKpjLoO9mBSJzTYP6" version="22.1.22" type="embed">
   <diagram name="Page-1" id="GBGmVqDWgZDGhen0g_vq">
     <mxGraphModel dx="1087" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <object label="Context" weatherState="WeatherState" id="OVgkkTsfn2CKIyNb1T31-11">
+        <object label="WeatherContext" weatherState="WeatherState" id="OVgkkTsfn2CKIyNb1T31-11">
           <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
             <mxGeometry x="690" y="310" width="260" height="100" as="geometry" />
           </mxCell>
