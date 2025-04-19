@@ -5,14 +5,8 @@ using WeatherMonitor.config;
 
 namespace WeatherMonitor.Util;
 
-public static class BotConfigUtils
+public static class ConfigUtils
 {
-    public static BotConfig DeserializeBotsConfigFile(string path)
-    {
-        var jsonString = File.ReadAllText(path);
-        return HelperUtil.DeserializeJsonString<BotConfig>(jsonString);
-    }
-    
     public static void ConfigBot<T>(out T bot, BotConfig config) where T : Bot, new()
     {
         bot = new T();

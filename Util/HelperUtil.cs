@@ -4,9 +4,9 @@ namespace WeatherMonitor.Util;
 
 public static class HelperUtil
 {
-    public static T DeserializeJsonString<T>(string jsonString)
+    public static T DeserializeJsonString<T>(string json, bool isPath)
     {
-        var deserializedObject = JsonSerializer.Deserialize<T>(jsonString, new JsonSerializerOptions
+        var deserializedObject = JsonSerializer.Deserialize<T>(isPath ? File.ReadAllText(json) : json, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
         });

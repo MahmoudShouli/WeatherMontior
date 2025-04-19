@@ -1,4 +1,5 @@
 ﻿using WeatherMonitor.Bots;
+using WeatherMonitor.config;
 using WeatherMonitor.Models;
 using WeatherMonitor.Parsers;
 using WeatherMonitor.Util;
@@ -9,26 +10,22 @@ internal static class Program
 {
     private static void Main()
     {
-        var registry = new ParserRegistry();
+        //Bots activation and subscription (Subscriber Pattern)
+        var deserializedObject = HelperUtil.DeserializeJsonString<BotConfig>("./config/BotConfig.json", true);
         
-        var data = PrinterUtil.PrintMainPrompt();
-        var format = HelperUtil.DetectFormat(data);
-        var parser = registry.GetParser(format);
-        var context = new WeatherContext(parser!);
-        var weatherState = context.ReadData(data);
+        ConfigUtils.ConfigBot<SunBot>(out var sunBot, deserializedObject);
+        ConfigUtils.ConfigBot<RainBot>(out var rainBot, deserializedObject);
+        ConfigUtils.ConfigBot<SnowBot>(out var snowBot, deserializedObject);
         
-        var deserializedObject = BotConfigUtils.DeserializeBotsConfigFile("./config/BotConfig.json");
-        
-        BotConfigUtils.ConfigBot<SunBot>(out var sunBot, deserializedObject);
-        BotConfigUtils.ConfigBot<RainBot>(out var rainBot, deserializedObject);
-        BotConfigUtils.ConfigBot<SnowBot>(out var snowBot, deserializedObject);
-        
-
         var weatherPublisher = new WeatherPublisher();
         weatherPublisher.Attach(snowBot);
         weatherPublisher.Attach(sunBot);
         weatherPublisher.Attach(rainBot);
         
-        weatherPublisher.ChangeWeatherState(weatherState);
+        //Parsers registry and detecting (Strategy Pattern)
+        var registry = new ParserRegistry();
+        var context = new WeatherContext();
+       
+        PrinterUtil.PrintMainPrompt(registry, context, weatherPublisher);
     }
 }
