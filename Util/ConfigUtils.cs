@@ -3,22 +3,14 @@ using System.Reflection;
 using WeatherMonitor.Bots;
 using WeatherMonitor.config;
 
-namespace WeatherMonitor.config;
+namespace WeatherMonitor.Util;
 
 public static class ConfigUtils
 {
-    public static BotConfig DeserializeConfigFile(string path)
+    public static BotConfig DeserializeBotsConfigFile(string path)
     {
-        var configJson = File.ReadAllText(path);
-        var config = JsonSerializer.Deserialize<BotConfig>(configJson, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
-
-        if (config != null)
-            return config;
-        throw new Exception("Failed to deserialize config file.");
-
+        var jsonString = File.ReadAllText(path);
+        return HelperUtil.DeserializeJsonString<BotConfig>(jsonString);
     }
     
     public static void ConfigBot<T>(out T bot, BotConfig config) where T : Bot, new()

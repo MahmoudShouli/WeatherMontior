@@ -1,4 +1,6 @@
-﻿using WeatherMonitor.Models;
+﻿using WeatherMonitor.config;
+using WeatherMonitor.Models;
+using WeatherMonitor.Util;
 
 namespace WeatherMonitor.Parsers;
 
@@ -6,6 +8,8 @@ public class JsonParser : IParserStrategy
 {
     public WeatherState Parse(string input)
     {
-        return new WeatherState();
+        var deserializedObject = HelperUtil.DeserializeJsonString<WeatherStateConfig>(input);
+        
+        return new WeatherState(deserializedObject.Location, deserializedObject.Temperature, deserializedObject.Humidity);
     }
 }
