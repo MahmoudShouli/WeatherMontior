@@ -1,6 +1,7 @@
 ﻿using WeatherMonitor.Bots;
 using WeatherMonitor.config;
 using WeatherMonitor.Models;
+using WeatherMonitor.Parsers;
 
 namespace WeatherMonitor;
 
@@ -8,7 +9,9 @@ internal static class Program
 {
     private static void Main()
     {
-        var weatherState = new WeatherState("New York", 10, 60);
+        var parser = new XmlParser();
+        var context = new WeatherContext(parser);
+        var weatherState = context.ReadData("<WeatherData>\n  <Location>City Name</Location>\n  <Temperature>80</Temperature>\n  <Humidity>50.0</Humidity>\n</WeatherData>\n");
         
         var deserializedObject = ConfigUtils.DeserializeConfigFile("./config/BotConfig.json");
         
