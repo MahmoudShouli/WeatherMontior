@@ -6,30 +6,15 @@ public static class PrinterUtil
 {
     public static string PrintMainPrompt()
     {
-        while (true)
+        Console.WriteLine("Enter the weather data and press enter two times:");
+
+        var inputBuilder = new StringBuilder();
+        string? line;
+        while (!string.IsNullOrWhiteSpace(line = Console.ReadLine()))
         {
-            Console.Clear();
-            Console.WriteLine("Enter the weather and press enter two times or Q to exit");
-
-            var inputBuilder = new StringBuilder();
-            string? line;
-            while (!string.IsNullOrWhiteSpace(line = Console.ReadLine()))
-            {
-                inputBuilder.AppendLine(line);
-            }
-
-            return inputBuilder.ToString();
-
-            // if (input.Equals("Q"))
-            //     break;
-            //
-            // PrintAnyKeyMessage();
+            inputBuilder.AppendLine(line);
         }
-    }
-    
-    private static void PrintAnyKeyMessage()
-    {
-        Console.WriteLine(" Press any key to continue...");
-        Console.ReadKey();
+
+        return inputBuilder.ToString();
     }
 }

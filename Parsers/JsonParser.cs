@@ -1,9 +1,11 @@
-﻿using WeatherMonitor.config;
+﻿using WeatherMonitor.Attributes;
+using WeatherMonitor.config;
 using WeatherMonitor.Models;
 using WeatherMonitor.Util;
 
 namespace WeatherMonitor.Parsers;
 
+[Format("json")]
 public class JsonParser : IParserStrategy
 {
     public WeatherState Parse(string input)

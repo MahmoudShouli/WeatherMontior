@@ -9,8 +9,12 @@ internal static class Program
 {
     private static void Main()
     {
+        var registry = new ParserRegistry();
+        
         var data = PrinterUtil.PrintMainPrompt();
-        var context = new WeatherContext(new JsonParser());
+        var format = HelperUtil.DetectFormat(data);
+        var parser = registry.GetParser(format);
+        var context = new WeatherContext(parser!);
         var weatherState = context.ReadData(data);
         
         var deserializedObject = BotConfigUtils.DeserializeBotsConfigFile("./config/BotConfig.json");

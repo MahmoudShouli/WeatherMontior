@@ -1,8 +1,10 @@
 ﻿using System.Xml.Linq;
+using WeatherMonitor.Attributes;
 using WeatherMonitor.Models;
 
 namespace WeatherMonitor.Parsers;
 
+[Format("xml")]
 public class XmlParser : IParserStrategy
 {
     public WeatherState Parse(string input)
