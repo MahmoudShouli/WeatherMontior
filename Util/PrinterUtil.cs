@@ -2,7 +2,7 @@
 
 namespace WeatherMonitor.Util;
 
-public class PrinterUtil
+public static class PrinterUtil
 {
     public static string PrintMainPrompt()
     {

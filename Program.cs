@@ -13,11 +13,11 @@ internal static class Program
         var context = new WeatherContext(new JsonParser());
         var weatherState = context.ReadData(data);
         
-        var deserializedObject = ConfigUtils.DeserializeBotsConfigFile("./config/BotConfig.json");
+        var deserializedObject = BotConfigUtils.DeserializeBotsConfigFile("./config/BotConfig.json");
         
-        ConfigUtils.ConfigBot<SunBot>(out var sunBot, deserializedObject);
-        ConfigUtils.ConfigBot<RainBot>(out var rainBot, deserializedObject);
-        ConfigUtils.ConfigBot<SnowBot>(out var snowBot, deserializedObject);
+        BotConfigUtils.ConfigBot<SunBot>(out var sunBot, deserializedObject);
+        BotConfigUtils.ConfigBot<RainBot>(out var rainBot, deserializedObject);
+        BotConfigUtils.ConfigBot<SnowBot>(out var snowBot, deserializedObject);
         
 
         var weatherPublisher = new WeatherPublisher();

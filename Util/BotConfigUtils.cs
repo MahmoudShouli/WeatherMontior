@@ -5,7 +5,7 @@ using WeatherMonitor.config;
 
 namespace WeatherMonitor.Util;
 
-public static class ConfigUtils
+public static class BotConfigUtils
 {
     public static BotConfig DeserializeBotsConfigFile(string path)
     {
