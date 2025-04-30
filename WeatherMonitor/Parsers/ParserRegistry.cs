@@ -3,6 +3,7 @@ using WeatherMonitor.Attributes;
 
 namespace WeatherMonitor.Parsers;
 
+//change to static
 public class ParserRegistry
 {
     private readonly Dictionary<string, IParserStrategy> _parsers = new();
