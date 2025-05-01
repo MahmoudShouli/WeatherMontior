@@ -14,11 +14,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup .NET 9.0 Preview
+      - name: Setup .NET 9.0 Preview SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '9.0.100-preview.3'
-          include-prerelease: true
+          dotnet-version: 9.0.x
+          dotnet-quality: preview
 
       - name: Restore dependencies
         run: dotnet restore
