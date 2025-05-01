@@ -13,6 +13,7 @@ public class RainBot : Bot
         {
             if ((publisher as WeatherPublisher)!.WeatherState.Humidity > HumidityThreshold)
             {
+                Activated = true;
                 Console.WriteLine("RainBot activated!");
                 Console.WriteLine(Message);
                 Console.WriteLine();
