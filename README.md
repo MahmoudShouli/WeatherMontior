@@ -1,0 +1,1 @@
+﻿[![build and test](https://github.com/MahmoudShouli/WeatherMontior/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/MahmoudShouli/WeatherMontior/actions/workflows/build-and-test.yml)
