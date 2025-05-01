@@ -13,6 +13,7 @@ public class SnowBot : Bot
         {
             if ((publisher as WeatherPublisher)!.WeatherState.Temperature < TemperatureThreshold)
             {
+                Activated = true;
                 Console.WriteLine("SnowBot activated!");
                 Console.WriteLine(Message);
                 Console.WriteLine();

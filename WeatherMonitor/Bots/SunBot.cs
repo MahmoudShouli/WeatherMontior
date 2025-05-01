@@ -13,6 +13,7 @@ public class SunBot : Bot
         {
             if ((publisher as WeatherPublisher)!.WeatherState.Temperature > TemperatureThreshold)
             {
+                Activated = true;
                 Console.WriteLine("SunBot activated!");
                 Console.WriteLine(Message);
                 Console.WriteLine();
